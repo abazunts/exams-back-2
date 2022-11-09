@@ -3,7 +3,6 @@ import { AppModule } from './app.module';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { join } from 'path';
 import { NestExpressApplication } from '@nestjs/platform-express';
 
 const PORT = process.env.PORT || 4040;
@@ -39,9 +38,6 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
 
-  app.useStaticAssets(join(__dirname, 'assets/swagger-ui-dist/'), {
-    prefix: '/swagger'
-  });
   // Listen app
   await app.listen(PORT)
 }
