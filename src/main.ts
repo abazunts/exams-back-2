@@ -3,8 +3,8 @@ import { AppModule } from './app.module';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { NestExpressApplication } from "@nestjs/platform-express";
 import { join } from 'path';
+import { NestExpressApplication } from '@nestjs/platform-express';
 
 const PORT = process.env.PORT || 4040;
 console.log(process.env.MONGODB_URI);
