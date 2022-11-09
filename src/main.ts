@@ -39,8 +39,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
 
-  app.useStaticAssets(join(__dirname, '/static'), {
-    prefix: '/swagger',
+  app.useStaticAssets(join(__dirname, 'assets/swagger-ui-dist/'), {
+    prefix: '/swagger'
   });
   // Listen app
   await app.listen(PORT)
