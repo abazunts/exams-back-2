@@ -11,7 +11,6 @@ import { UsersService } from './users.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { ObjectId } from 'mongoose';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { IdValidationPipe } from '../common/pipes/id-validation.pipe';
 import { ApiTags } from '@nestjs/swagger';
 
 @ApiTags('users')
