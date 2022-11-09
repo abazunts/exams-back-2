@@ -4,8 +4,8 @@ import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-const PORT = process.env.PORT || 5000;
-
+const PORT = process.env.PORT || 4040;
+console.log(process.env.MONGODB_URI);
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   // CORS
@@ -38,7 +38,7 @@ async function bootstrap() {
   SwaggerModule.setup('api', app, document);
 
   // Listen app
-  await app.listen(PORT);
+  await app.listen(PORT)
 }
 
 bootstrap();

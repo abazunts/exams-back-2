@@ -15,7 +15,7 @@ import { FilmsModule } from './films/films.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ envFilePath: '.env.local' }),
-    MongooseModule.forRoot(process.env.MONGODB_URI),
+    MongooseModule.forRoot('mongodb+srv://mike:KxuTWrWs6B9LlWMh@cluster0.xqca7og.mongodb.net/?retryWrites=true&w=majority'),
     UsersModule,
     TodosModule,
     PhotosModule,
