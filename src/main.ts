@@ -3,11 +3,13 @@ import { AppModule } from './app.module';
 import { BadRequestException, ValidationPipe } from '@nestjs/common';
 import { HttpExceptionFilter } from './common/filters/http-exception.filter';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { NestExpressApplication } from "@nestjs/platform-express";
+import { join } from 'path';
 
 const PORT = process.env.PORT || 4040;
 console.log(process.env.MONGODB_URI);
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
   // CORS
   app.enableCors();
 
@@ -35,8 +37,11 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/v1', app, document);
+  SwaggerModule.setup('api', app, document);
 
+  app.useStaticAssets(join(__dirname, '/static'), {
+    prefix: '/api',
+  });
   // Listen app
   await app.listen(PORT)
 }
