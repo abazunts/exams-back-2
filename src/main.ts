@@ -37,10 +37,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  SwaggerModule.setup('swagger', app, document);
 
   app.useStaticAssets(join(__dirname, '/static'), {
-    prefix: '/api',
+    prefix: '/swagger',
   });
   // Listen app
   await app.listen(PORT)
